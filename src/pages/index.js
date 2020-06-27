@@ -3,15 +3,16 @@ import {
   Heading,
   Text,
   useColorMode,
-  Button,
   Switch,
   Flex,
   Box,
   FormLabel,
+  SimpleGrid,
 } from "@chakra-ui/core"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import FollowersCard from "../components/followersCard"
 
 const IndexPage = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -35,6 +36,13 @@ const IndexPage = () => {
           />
         </Box>
       </Flex>
+
+      <SimpleGrid columns={4} spacing={8} mt={8}>
+        <FollowersCard />
+        <FollowersCard />
+        <FollowersCard />
+        <FollowersCard />
+      </SimpleGrid>
     </Layout>
   )
 }
