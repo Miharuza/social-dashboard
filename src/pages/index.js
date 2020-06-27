@@ -13,6 +13,7 @@ import {
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FollowersCard from "../components/followersCard"
+import OverviewCard from "../components/overviewCard"
 
 const IndexPage = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -61,6 +62,38 @@ const IndexPage = () => {
           stat={530}
           change={5}
           social="youtube"
+        />
+      </SimpleGrid>
+
+      <Heading mt={16} mb={4}>
+        Overview - Today
+      </Heading>
+      <SimpleGrid columns={4} rows={2} spacing={8}>
+        <OverviewCard
+          social="facebook"
+          stat={50}
+          change={2}
+          metric="Page views"
+        />
+        <OverviewCard social="facebook" stat={50} change={2} metric="Likes" />
+
+        <OverviewCard social="instagram" stat={50} change={2} metric="Likes" />
+        <OverviewCard
+          social="instagram"
+          stat={50}
+          change={2}
+          metric="Profile views"
+        />
+
+        <OverviewCard social="twitter" stat={50} change={2} metric="Retweets" />
+        <OverviewCard social="twitter" stat={50} change={2} metric="Likes" />
+
+        <OverviewCard social="youtube" stat={50} change={2} metric="Likes" />
+        <OverviewCard
+          social="youtube"
+          stat={50}
+          change={2}
+          metric="Total views"
         />
       </SimpleGrid>
     </Layout>
