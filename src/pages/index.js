@@ -38,10 +38,30 @@ const IndexPage = () => {
       </Flex>
 
       <SimpleGrid columns={4} spacing={8} mt={8}>
-        <FollowersCard />
-        <FollowersCard />
-        <FollowersCard />
-        <FollowersCard />
+        <FollowersCard
+          username="miha.prijon"
+          stat={530}
+          change={5}
+          social="facebook"
+        />
+        <FollowersCard
+          username="@prijon16"
+          stat={530}
+          change={5}
+          social="twitter"
+        />
+        <FollowersCard
+          username="@miharuza"
+          stat={530}
+          change={5}
+          social="instagram"
+        />
+        <FollowersCard
+          username="TheLordisick"
+          stat={530}
+          change={5}
+          social="youtube"
+        />
       </SimpleGrid>
     </Layout>
   )

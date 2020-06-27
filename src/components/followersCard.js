@@ -12,9 +12,13 @@ import {
   StatArrow,
 } from "@chakra-ui/core"
 import facebookIcon from "../images/icon-facebook.svg"
+import twitterIcon from "../images/icon-twitter.svg"
+import instagramIcon from "../images/icon-instagram.svg"
+import youtubeIcon from "../images/icon-youtube.svg"
 
-const FollowersCard = () => {
+const FollowersCard = ({ social, username, stat, change }) => {
   const { colorMode } = useColorMode()
+
   return (
     <Box
       backgroundColor={colorMode === "light" ? "gray.100" : "gray.600"}
@@ -22,15 +26,39 @@ const FollowersCard = () => {
       borderRadius="lg"
       textAlign="center"
       borderTop="4px solid"
-      borderTopColor="blue.500"
+      borderTopColor={
+        social === "facebook"
+          ? "facebook.500"
+          : social === "twitter"
+          ? "twitter.500"
+          : social === "instagram"
+          ? "orange.400"
+          : social === "youtube"
+          ? "red.500"
+          : null
+      }
     >
       <Flex justify="center">
-        <Image src={facebookIcon} size="24px" mr={4} />
-        <Text>@miharuza</Text>
+        <Image
+          src={
+            social === "facebook"
+              ? facebookIcon
+              : social === "twitter"
+              ? twitterIcon
+              : social === "instagram"
+              ? instagramIcon
+              : social === "youtube"
+              ? youtubeIcon
+              : null
+          }
+          size="24px"
+          mr={4}
+        />
+        <Text>{username}</Text>
       </Flex>
       <Stat mt={4}>
         <StatNumber fontSize={40} fontWeight={700}>
-          530
+          {stat}
         </StatNumber>
         <StatLabel
           letterSpacing="5px"
@@ -43,7 +71,8 @@ const FollowersCard = () => {
           color={colorMode === "light" ? "green.600" : "green.300"}
           fontWeight={700}
         >
-          <StatArrow type="increase" />5 today
+          <StatArrow type="increase" />
+          {change} today
         </StatHelpText>
       </Stat>
     </Box>
