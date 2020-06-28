@@ -36,6 +36,26 @@ module.exports = {
         display: "swap",
       },
     },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        type: `user-profile`,
+        username: `miha_prijon`,
+      },
+    },
+    // {
+    //   resolve: 'gatsby-source-twitter-users',
+    //   options: {
+    //     //Keys and tokens from your twitter dev dashboard
+    //     config: {
+    //       consumer_key: <TWITTER_CONSUMER_KEY>,
+    //       consumer_secret: <TWITTER_CONSUMER_SECRET>,
+    //       bearer_token: <TWITTER_BEARER_TOKEN>,
+    //     },
+    //     //Comma Separated Twitter Handles
+    //     users: 'prijon16',
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

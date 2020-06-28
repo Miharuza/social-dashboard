@@ -9,7 +9,7 @@ import {
   FormLabel,
   SimpleGrid,
 } from "@chakra-ui/core"
-
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FollowersCard from "../components/followersCard"
@@ -17,6 +17,24 @@ import OverviewCard from "../components/overviewCard"
 
 const IndexPage = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const data = useStaticQuery(graphql`
+    {
+      allInstaUserNode {
+        edges {
+          node {
+            username
+            edge_follow {
+              count
+            }
+            edge_followed_by {
+              count
+            }
+          }
+        }
+      }
+    }
+  `)
+  const instagram = data.allInstaUserNode.edges[0].node
   return (
     <Layout>
       <SEO title="Home" />
@@ -52,8 +70,8 @@ const IndexPage = () => {
           social="twitter"
         />
         <FollowersCard
-          username="@miharuza"
-          stat={530}
+          username={instagram.username}
+          stat={instagram.edge_followed_by.count}
           change={5}
           social="instagram"
         />
@@ -77,12 +95,11 @@ const IndexPage = () => {
         />
         <OverviewCard social="facebook" stat={50} change={2} metric="Likes" />
 
-        <OverviewCard social="instagram" stat={50} change={2} metric="Likes" />
         <OverviewCard
           social="instagram"
-          stat={50}
+          stat={instagram.edge_follow.count}
           change={2}
-          metric="Profile views"
+          metric="Following"
         />
 
         <OverviewCard social="twitter" stat={50} change={2} metric="Retweets" />
